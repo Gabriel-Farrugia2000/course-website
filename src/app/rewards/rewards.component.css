@@ -1,0 +1,49 @@
+h1{
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 0;
+    font-size: 2.5em;
+    color: antiquewhite;
+}
+
+hr{
+    width: 3%;
+    border: 3px solid;
+    border-radius: 5px;
+    margin-left: 46.5%;
+    margin-top: 0.75em;
+    color: antiquewhite;
+}
+
+.mat-card{
+    max-width: 20%;
+    margin: 2% 0;
+    margin-left: 3.5%;
+    text-align: center;
+}
+
+.mat-card-image {
+    width: 70%;
+    padding-top: 2em;
+}
+
+.mat-card-title{
+    font-size: 2em;
+    padding-top: 1em;
+}
+
+.card-description{
+    padding-top: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+    margin-bottom: 1.25em;
+}
+
+.card-place{
+    font-size: 1.75em;
+    height: 70px;
+    padding-top: .70em;
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid;
+}

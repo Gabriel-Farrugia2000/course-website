@@ -1,0 +1,52 @@
+h1{
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 0;
+    font-size: 2.5em;
+    color: antiquewhite;
+}
+
+hr{
+    width: 9%;
+    border: 3px solid;
+    border-radius: 5px;
+    margin-left: 39%;
+    margin-top: 0.75em;
+    color: antiquewhite;
+}
+
+.mat-card{
+    max-width: 20%;
+    margin-top: 5%;
+    margin-left: 4%;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.mat-card-image {
+    width: 50%;
+    padding-top: 2em;
+}
+
+.mat-card-title{
+    padding-top: 1em;
+}
+
+.card-description{
+    padding-top: 1em;
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+
+.comingSoon{
+    width: 20%;
+    margin-top: 5%;
+    background-color: black;
+    color: aliceblue;
+}
+
+.comingSoon-title{
+    font-size: 3.25em;
+    padding-top: 4.5em;
+}

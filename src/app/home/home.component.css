@@ -1,0 +1,70 @@
+.row{
+    margin: 0;
+    height: 100vh;
+}
+.topcontainer{
+    background-color: rgb(238, 238, 238);
+}
+.topcontainer .col-5{
+    text-align: center;
+    padding-left: 7%;
+    padding-top: 10%;
+}
+
+.topcontainer .col-7{
+    padding-top: 7%;
+}
+
+h1{
+    font-size: 2.5em;
+    line-height: 1.3em;
+}
+
+.topcontainer p{
+    text-indent: 3em;
+    text-align: justify;
+    font-size: 1.4em;
+    line-height: 1.3em;
+}
+
+img{
+    width: 80%;
+    height: 70%;
+}
+
+.middlecontainer{
+    background-color: #27283D;
+    color: white;
+    height: 80vh;
+}
+
+.middlecontainer h1 {
+    padding-top: 20%;
+}
+
+.middlecontainer p{
+    text-align: justify;
+    font-size: 1.4em;
+    line-height: 1.3em;
+    width: 70%;
+}
+
+.bottomcontainer{
+    background-color: rgb(238, 238, 238);
+}
+
+.bottomcontainer .row{
+    padding-top: 10%;
+    height: 80vh;    
+}
+.bottomcontainer h1{
+    margin-left: 7%;
+}
+
+.bottomcontainer p{
+    text-indent: 20em;
+    font-size: 2em;
+    line-height: 3.3em;
+    letter-spacing: 0.10em;
+    word-spacing: 10px;
+}

@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+<hr>
+<div class="card-group">
+    <mat-card routerLink = "/experience-page" *ngFor="let card of cards">
+        <img mat-card-image [src]="card.img" alt="javascript-icon">
+        <mat-card-content>
+            <mat-card-title>{{card.title}}</mat-card-title>
+            <p class="card-description">{{card.description}} </p>
+            </mat-card-content>
+    </mat-card>
+
+    <mat-card class="comingSoon" *ngFor="let comingCourse of comingSoonCourses">
+        <mat-card-content>
+            <mat-card-title class="comingSoon-title">{{comingCourse.title}}</mat-card-title>
+            </mat-card-content>
+    </mat-card>
+</div>
+

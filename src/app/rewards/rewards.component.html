@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+<hr>
+
+<div class="card-group">
+    <mat-card *ngFor="let card of cards">
+        <img mat-card-image [src]="card.img" alt="company logo">
+        <mat-card-content>
+            <mat-card-title class="card-title">{{card.companyName}}</mat-card-title>
+            <p class="card-description">{{card.description}} </p>
+            <h2 class="card-place">{{card.place}} </h2>
+            </mat-card-content>
+    </mat-card>
+
+</div>
