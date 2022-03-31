@@ -1,49 +1,50 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <div class="bg-white" id="sidebar-wrapper">
+        <div class="col-2 p-0">
+            <div class="sidebar">
                 <div class="sidebar-heading border-bottom text-center">Phase 1 Bitches</div>
                 <div class="list-group list-group-flush" *ngFor="let lesson of lessons">
                     <a class="list-group-item list-group-item-action p-3 text-center border-bottom" href="#">{{lesson.lesson}}</a>
                 </div>
             </div>
         </div>
-        <div class="col-9 mt-5">
+        <div class="col-10 mt-5">
                 <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
                 <span class="material-icons">outlined_flag</span> 
-            
-            <div class="questions">
-                <div class="card">
-                    <h3>Why was coding invented?</h3>
-                </div>
-            </div>
-            
+
+
+            <!-- Questions -->
+            <h2 class="mt-5">{{questionList[currentQuestion]?.questionText}}</h2>
+
+                <!-- Place holder for answers -->
             <div cdkDropListGroup>
-                <div class="example-container">
-                  <h2>To do</h2>
-              
-                  <div
-                    cdkDropList
-                    [cdkDropListData]="todo"
-                    class="example-list"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-                  </div>
-                </div>
-              
-                <div class="example-container">
-                  <h2>Done</h2>
-              
-                  <div
-                    cdkDropList
-                    [cdkDropListData]="done"
-                    class="example-list"
-                    (cdkDropListDropped)="drop($event)">
-                    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-                  </div>
+              <div class="questions-container">
+                <div
+                  cdkDropList
+                  cdkDropListOrientation="horizontal" 
+                  [cdkDropListData]="placeHolder"
+                  class="questions-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="option-box" *ngFor="let item of placeHolder" cdkDrag>{{item}}</div>
                 </div>
               </div>
             
+            <!-- Options-->
+            <div class="option-container">          
+              <div
+                cdkDropList
+                cdkDropListOrientation="horizontal" 
+                [cdkDropListData]="options"
+                class="options-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="option-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
+              </div>
+            </div>
+          </div>
+            
+          <button mat-raised-button color="primary" (click)="previousQuestion()">Previous</button>
+          <button mat-raised-button color="primary" (click)="nextQuestion()">Next</button>
+
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { QuestionService } from '../service/question.service';
 
 @Component({
   selector: 'app-phase1-questions-javascript',
@@ -7,6 +8,10 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./phase1-questions-javascript.component.css']
 })
 export class Phase1QuestionsJavascriptComponent implements OnInit {
+
+  questionList : any = [];
+  currentQuestion : number = 0;
+
   lessons = [
     {
       lesson: 'Lesson 1',
@@ -50,9 +55,10 @@ export class Phase1QuestionsJavascriptComponent implements OnInit {
     
   ]
   
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  placeHolder: any = [];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  options = ['<hr>', 'test', 'test2','test3'];
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -66,9 +72,21 @@ export class Phase1QuestionsJavascriptComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+    this.getAllQuestions();
   }
-
+  getAllQuestions(){
+    this.questionService.getQuestionJson()
+    .subscribe(res=>{
+      this.questionList = res.questions;
+    })
+  }
+  nextQuestion(){
+    this.currentQuestion++;
+  }
+  previousQuestion(){
+    this.currentQuestion--;
+  }
 }
