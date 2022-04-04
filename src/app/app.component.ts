@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Question } from './question.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'thesis-project';
+
+  /*
+    console.log(question.getOptionsArray());
+    const isFine = question.isCorrectSequence('hello', 'world', 'teams');
+  }
+  */
 }

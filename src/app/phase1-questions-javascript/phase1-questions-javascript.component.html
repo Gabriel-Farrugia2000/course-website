@@ -14,9 +14,11 @@
 
 
             <!-- Questions -->
-            <h2 class="mt-5">{{questionList[currentQuestion]?.questionText}}</h2>
-
-                <!-- Place holder for answers -->
+            <h2 class="mt-5">{{questions[currentQuestion]?.questionText}}</h2>
+            <h2 class="mt-5" *ngFor="let item of questions[currentQuestion]?.options">{{item.label}}</h2>
+          
+        
+          
             <div cdkDropListGroup>
               <div class="questions-container">
                 <div
@@ -25,22 +27,22 @@
                   [cdkDropListData]="placeHolder"
                   class="questions-list"
                   (cdkDropListDropped)="drop($event)">
-                  <div class="option-box" *ngFor="let item of placeHolder" cdkDrag>{{item}}</div>
+                  <div class="option-box" *ngFor="let item of placeHolder" cdkDrag>{{item.label}}</div>
                 </div>
               </div>
+
             
-            <!-- Options-->
-            <div class="option-container">          
-              <div
-                cdkDropList
-                cdkDropListOrientation="horizontal" 
-                [cdkDropListData]="options"
-                class="options-list"
-                (cdkDropListDropped)="drop($event)">
-                <div class="option-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
+          
+              <div class="option-container">          
+                <div
+                  cdkDropList
+                  cdkDropListOrientation="horizontal" 
+                  [cdkDropListData]="options"
+                  class="options-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="option-box" *ngFor="let item of options" cdkDrag>{{item.label}}</div>
+                </div>
               </div>
-            </div>
-          </div>
             
           <button mat-raised-button color="primary" (click)="previousQuestion()">Previous</button>
           <button mat-raised-button color="primary" (click)="nextQuestion()">Next</button>
