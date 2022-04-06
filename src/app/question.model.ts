@@ -45,4 +45,9 @@ export class Question
         if (!option) return false;
         return option.correct;
     }
+
+    correctLength(): number
+    {
+        return this.options.filter(o => o.correct).length;
+    }
 }

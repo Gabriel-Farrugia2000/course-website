@@ -15,34 +15,37 @@
 
             <!-- Questions -->
             <h2 class="mt-5">{{questions[currentQuestion]?.questionText}}</h2>
-            <h2 class="mt-5" *ngFor="let item of questions[currentQuestion]?.options">{{item.label}}</h2>
-          
-        
-          
-            <div cdkDropListGroup>
-              <div class="questions-container">
-                <div
-                  cdkDropList
-                  cdkDropListOrientation="horizontal" 
-                  [cdkDropListData]="placeHolder"
-                  class="questions-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="option-box" *ngFor="let item of placeHolder" cdkDrag>{{item.label}}</div>
-                </div>
-              </div>
-
+              
+            <br>
+            <div class="example-container">
+              <h2>Placeholder</h2>
             
-          
-              <div class="option-container">          
-                <div
-                  cdkDropList
-                  cdkDropListOrientation="horizontal" 
-                  [cdkDropListData]="options"
-                  class="options-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="option-box" *ngFor="let item of options" cdkDrag>{{item.label}}</div>
-                </div>
+              <div
+                cdkDropList
+                #placeHolderList="cdkDropList"
+                [cdkDropListData]="placeHolder"
+                [cdkDropListConnectedTo]="[optionsList]"
+                class="example-list replace-only"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of placeHolder" cdkDrag>{{item}}</div>
               </div>
+            </div>
+
+            <br>
+
+            <div class="example-container">
+              <h2>Options</h2>
+            
+              <div
+                cdkDropList
+                #optionsList="cdkDropList"
+                [cdkDropListData]="options"
+                [cdkDropListConnectedTo]="[placeHolderList]"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
+              </div>
+            </div>
             
           <button mat-raised-button color="primary" (click)="previousQuestion()">Previous</button>
           <button mat-raised-button color="primary" (click)="nextQuestion()">Next</button>
@@ -51,6 +54,3 @@
     </div>
 </div>
 
-
-
-    

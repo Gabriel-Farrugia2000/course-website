@@ -8,7 +8,7 @@ import { Question } from '../question.model';
   templateUrl: './phase1-questions-javascript.component.html',
   styleUrls: ['./phase1-questions-javascript.component.css']
 })
-export class Phase1QuestionsJavascriptComponent implements OnInit {
+export class Phase1QuestionsJavascriptComponent {
 
   lessons = [
     {
@@ -54,38 +54,49 @@ export class Phase1QuestionsJavascriptComponent implements OnInit {
   ]
 
   questions: Question[] = [];
-  currentQuestion : number = 0;
+  currentQuestion : number = -1;
 
-  placeHolder: any = [];
-  options: { label: string; correct: boolean }[] = []
+  placeHolder: string [] = [];
 
-  
-  
-  drop
-  (event: CdkDragDrop<[]>) {
+  options: string [] = [];
+
+
+  drop(event: CdkDragDrop<string[]>) {
+    
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
+      if (event.container.data.length >= this.questions[this.currentQuestion].correctLength())
+        return;
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex,
+        );
+      }
   }
-  
   
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
     this.questions = this.questionService.getAll();
+    this.nextQuestion();
   }
 
   nextQuestion(){
     this.currentQuestion++;
+    this.loadQuestion();
   }
   previousQuestion(){
     this.currentQuestion--;
+    this.loadQuestion();
+  }
+
+  loadQuestion()
+  {
+    const question = this.questions[this.currentQuestion];
+    this.options = question.getOptionsArray();
+    this.placeHolder = [];
   }
 }

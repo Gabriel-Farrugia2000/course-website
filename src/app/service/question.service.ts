@@ -32,7 +32,6 @@ export class QuestionService
       }
     ]
     ),
-    
     new Question('test2', [])
   ];
   
