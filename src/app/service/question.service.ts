@@ -11,14 +11,17 @@ export class QuestionService
       'Put these in an order that creates a for loop:', 
     [
       {
+        order: 0,
         label: 'for (var i = 0; i < 10; i++)',
         correct: true
       },
       {
+        order: 1,
         label: '{',
         correct: true
       },
       {
+        order: 2,
         label: 'console.log(i);',
         correct: true
       },
@@ -27,6 +30,7 @@ export class QuestionService
         correct: false
       },
       {
+        order: 3,
         label: '}',
         correct: true
       }
@@ -39,5 +43,6 @@ export class QuestionService
   {
     return this.questions;
   }
+  
   
 }

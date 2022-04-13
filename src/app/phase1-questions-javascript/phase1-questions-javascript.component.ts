@@ -3,6 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
 
+
 @Component({
   selector: 'app-phase1-questions-javascript',
   templateUrl: './phase1-questions-javascript.component.html',
@@ -55,7 +56,6 @@ export class Phase1QuestionsJavascriptComponent {
 
   questions: Question[] = [];
   currentQuestion : number = -1;
-
   placeHolder: string [] = [];
 
   options: string [] = [];
@@ -66,8 +66,8 @@ export class Phase1QuestionsJavascriptComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      if (event.container.data.length >= this.questions[this.currentQuestion].correctLength())
-        return;
+      // if (event.container.data.length >= this.questions[this.currentQuestion].correctLength())
+      //   return;
         transferArrayItem(
           event.previousContainer.data,
           event.container.data,
@@ -82,6 +82,8 @@ export class Phase1QuestionsJavascriptComponent {
   ngOnInit(): void {
     this.questions = this.questionService.getAll();
     this.nextQuestion();
+
+    this.questions[0].isCorrect('{');
   }
 
   nextQuestion(){
@@ -95,8 +97,23 @@ export class Phase1QuestionsJavascriptComponent {
 
   loadQuestion()
   {
+    /* Loads the question with the options as well and empties the placeholder*/
     const question = this.questions[this.currentQuestion];
     this.options = question.getOptionsArray();
     this.placeHolder = [];
   }
+
+  validateAnswer() {
+    /* When check button is pressed, it checks the answer stated in the function isCorrect
+    if yes, it will return true*/
+    
+    const option = this.questions[this.currentQuestion];    
+    if(option.isCorrectSequence(this.placeHolder))
+      alert('good job')
+    else
+    alert('try again')
+    console.log(this.placeHolder);
+
+  }
+
 }

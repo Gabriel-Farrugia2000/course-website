@@ -2,11 +2,12 @@ export class Question
 {
     // Setting the default value in a class should make all fields optional.
     questionText: string = '';
-    options: { label: string; correct: boolean }[] = []
+    options: { label: string; correct: boolean, order?: number }[] = [];
+    description: string = ''; // this could be the reason that makes the answer correct / documentation / whatever
     
     constructor(
         questionText: string,
-        options: { label: string; correct: boolean }[]
+        options: { label: string; correct: boolean; order?: number }[]
     ) {
         this.questionText = questionText;
         this.options = options;
@@ -25,9 +26,28 @@ export class Question
     // You can use it in the format isCorrect(param1, param2, param3...)
     // or isCorrect(['string', 'string', 'string'])
     // the parameters will always go into a single array called "answers"
-    isCorrectSequence(...answers: string[]): boolean {
+    isCorrectSequence(answers: string[]): boolean {
         // do the thing here.
-        console.log(answers);
+        // for (var i = 0; i < this.options.filter(o => o.id).length; i++){
+        //     var option = this.options.find((option) => option.id === answers);
+        //   }
+        //    if(i==this.options.filter(o => o.correct).length-1){
+        //     if (!option)
+        //       return true;
+        //     else
+        //       return false;
+        //     }
+        for (var i = 0; i < answers.length; i++)
+        {
+            const answer = answers[i];
+            if (!this.isCorrect(answer)) return false;
+            
+            const item = this.options.find((option) => option.label === answer && i === option.order);
+            if (!item) return false;
+        }
+
+        const correctAnswers = this.options.filter(option => option.correct).length;
+        return answers.length === correctAnswers;
         
         // loop through the answers array
         // if the order doesn't match or is incorrect
@@ -35,12 +55,10 @@ export class Question
 
         // after the loop has ended
         // return true
-
-        return false;
     }
     
     // Checks that a single answer is correct.
-    isCorrect(answer: string): boolean {
+    isCorrect(answer: string) {
         const option = this.options.find((option) => option.label === answer);
         if (!option) return false;
         return option.correct;
