@@ -6,27 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lessons.component.css']
 })
 export class LessonsComponent implements OnInit {
-  title = "Choose  a language to learn"
-
-  cards = [
-    {
-      img: './assets/javascript-icon.png',
-      title: 'Javascript',
-      description: 'Learn how to use the most powerful and flexible programming languages of the web that owers the dynamic behavior on most websites'
-    }
-  ]
-
-  comingSoonCourses = [
-    {
-      title: 'Coming Soon!',
-    },
-    {
-      title: 'Coming Soon!',
-    },
-    {
-      title: 'Coming Soon!',
-    },
-  ]
+  introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar leo eget arcu iaculis dictum. Curabitur pellentesque sapien vitae libero porta, sed tristique lorem malesuada. Aliquam et odio nulla. Sed ut lacus urna. Phasellus ac eros semper, commodo enim vitae, consequat est. Nullam aliquet eros eget dui placerat imperdiet. Aenean eu ipsum fermentum ipsum venenatis molestie. "
 
   constructor() { }
 

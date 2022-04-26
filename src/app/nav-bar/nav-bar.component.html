@@ -1,8 +1,18 @@
-<mat-toolbar color="primary" class="mat-elevation-z4">
+<mat-toolbar class="mat-elevation-z4">
     <h1>Codence</h1>
-
-    <a mat-button routerLink="home">Home</a>
-    <a mat-button routerLink="lessons">Lessons</a>
-    <a mat-button routerLink="leaderboard">Leaderboard</a>
-    <a mat-button routerLink="rewards">Rewards</a>
+    <nav class="shift">
+        <ul>
+        <li><a mat-button routerLinkActive="active" routerLink="home" class="nav-link">Home</a></li>
+        <li>
+            <div class="dropdown">
+                <a mat-button routerLinkActive="active" class="nav-link">Lesson</a>
+                <div class="dropdown-content">
+                    <button class="test" routerLink="lessons">Javascript</button>
+                </div>
+            </div>
+        </li>
+        <li><a mat-button routerLinkActive="active" routerLink="leaderboard">Leaderboard</a></li>
+        <li><a mat-button routerLinkActive="active" routerLink="rewards">Rewards</a></li>
+        </ul>
+    </nav>
 </mat-toolbar>

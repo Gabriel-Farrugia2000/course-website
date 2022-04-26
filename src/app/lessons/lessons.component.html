@@ -1,18 +1,28 @@
-<h1>{{title}}</h1>
-<hr>
-<div class="card-group">
-    <mat-card routerLink = "/experience-page" *ngFor="let card of cards">
-        <img mat-card-image [src]="card.img" alt="javascript-icon">
-        <mat-card-content>
-            <mat-card-title>{{card.title}}</mat-card-title>
-            <p class="card-description">{{card.description}} </p>
-            </mat-card-content>
-    </mat-card>
+<div class="wrapper">
+    <div class="topcontainer">
+        <div class="row">
+            <div class="col-5"> 
+                <h1><b>What is Javascript?</b></h1>
+                <p>{{ introText }}</p>
+            </div>
+            
+            <div class="col-7">
+                <img src="/assets/javascriptimage.png" alt="background image">
+            </div>
+        </div>
+    </div>
 
-    <mat-card class="comingSoon" *ngFor="let comingCourse of comingSoonCourses">
-        <mat-card-content>
-            <mat-card-title class="comingSoon-title">{{comingCourse.title}}</mat-card-title>
-            </mat-card-content>
-    </mat-card>
+    <div class="middlecontainer">
+        <div class="row">
+            <div class="col-6">
+                <img src="/assets/javascriptimage2.png" alt="background image">
+            </div>
+
+            <div class="col-6"> 
+                <h1><b>Why Javascript?</b></h1>
+                <p>{{ introText }}</p>
+                <a mat-raised-button href="experience-page">Get Started</a>
+            </div>
+        </div>
+    </div>
 </div>
-

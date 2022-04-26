@@ -1,45 +1,66 @@
+/* .topcontainer{
+    background-image: url("/assets/image 12.png");
+}
+.row{
+    margin: 0;
+    height: 100vh;
+}
+
 h1{
     text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 0;
+    margin-top: 8%;
     font-size: 2.5em;
-    color: aliceblue;
+    color: #A7236E;
+    height: 5px;
+    font-weight: bold;
 }
 
 hr{
-    width: 7%;
-    border: 3px solid;
-    border-radius: 5px;
-    margin-left: 41%;
-    margin-top: 0.75em;
-    color: aliceblue;
+    border-radius: 3px;
+    opacity: 100%;
+    color: #7973F0;
+    height: 6px;
+    width: 15%;
+    margin-left: 33.2%;
 }
 
 .card-group{
-    margin-left: 18%;
+    margin-bottom: 2em;
 }
 
 .mat-card{
     max-width: 20%;
     margin-top: 5%;
-    margin-left: 4%;
+    margin-left: 9%;
     cursor: pointer;
+    background-color: #5E5B8F;
+    box-shadow: 0 5px 26px aqua;
+}
+
+.mat-card:hover{
+    transform: rotatex(0deg);
+    transform: rotatez(0deg);
+    transition:.6s;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
 .mat-card-image {
-    width: 70%;
+    width: 40%;
     padding-top: 2em;
-    margin-left: 4em;
+    margin-left: 30%;
 }
 
 .mat-card-title{
-    padding-top: 1em;
+    padding-top: 0.75em;
     text-align: center;
+    font-size: 2.5em;
+    color: white;
 }
 
 .card-description{
-    padding-top: 1em;
-    font-size: 1rem;
+    padding-top: 2em;
+    font-size: 1.5em;
     line-height: 1.5em;
     text-align: center;
-}
+    color: white;
+} */

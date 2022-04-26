@@ -1,52 +1,74 @@
+.wrapper{
+    background-image: url("/assets/image 12.png");
+}
+.row{
+    margin: 0;
+    height: 100vh;
+}
+
+.topcontainer .col-5{
+    text-align: center;
+    padding-left: 7%;
+    padding-top: 15%;
+    
+}
+
+.topcontainer .col-7{
+    margin-top: 7%;
+}
+
 h1{
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 0;
-    font-size: 2.5em;
-    color: antiquewhite;
+    text-align: left;
+    margin-left: 0.2em;
+    font-size: 3em;
+    line-height: 1.3em;
+    color: #A7236E;
 }
 
-hr{
-    width: 9%;
-    border: 3px solid;
-    border-radius: 5px;
-    margin-left: 39%;
-    margin-top: 0.75em;
-    color: antiquewhite;
+.topcontainer p{
+    width: 85%;
+    font-weight: 500;
+    color: #433EAF;
+    text-align: justify;
+    font-size: 1.4em;
+    margin-left: 0.6em;
+    margin-top: 1.5em;
+    line-height: 1.3em;
 }
 
-.mat-card{
-    max-width: 20%;
-    margin-top: 5%;
-    margin-left: 4%;
-    text-align: center;
-    cursor: pointer;
+.topcontainer img{
+    width: 90%;
+    height: 80%;
+}
+
+.middlecontainer img{
+    width: 90%;
+    height: 80%;
+    margin-left: 5%;
 }
 
 
-.mat-card-image {
-    width: 50%;
-    padding-top: 2em;
+.middlecontainer h1 {
+    padding-top: 22%;
+    margin: 0;
 }
 
-.mat-card-title{
-    padding-top: 1em;
+.middlecontainer p{
+    text-align: justify;
+    font-size: 1.4em;
+    line-height: 1.3em;
+    width: 70%;
+    color: #433EAF;
+    font-weight: 500;
+    margin-top: 1.5em;
 }
 
-.card-description{
-    padding-top: 1em;
-    font-size: 1rem;
-    line-height: 1.5em;
-}
 
-.comingSoon{
-    width: 20%;
-    margin-top: 5%;
-    background-color: black;
-    color: aliceblue;
-}
-
-.comingSoon-title{
-    font-size: 3.25em;
-    padding-top: 4.5em;
+.middlecontainer a{
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    height: 2.5em;
+    background-color: #433EAF;
+    color: white;
 }

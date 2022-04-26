@@ -3,8 +3,8 @@
         <div class="col-2 p-0">
             <div class="sidebar">
                 <div class="sidebar-heading border-bottom text-center">Phase 1 Bitches</div>
-                <div class="list-group list-group-flush" *ngFor="let lesson of lessons">
-                    <a class="list-group-item list-group-item-action p-3 text-center border-bottom" href="#">{{lesson.lesson}}</a>
+                <div class="list-group list-group-flush" *ngFor="let lesson of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                    <a class="list-group-item list-group-item-action p-3 text-center border-bottom" href="#" [ngClass]="{ 'disabled': lesson > 1 }">Lesson {{lesson}}</a>
                 </div>
             </div>
         </div>

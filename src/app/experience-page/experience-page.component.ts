@@ -6,23 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./experience-page.component.css']
 })
 export class ExperiencePageComponent implements OnInit {
-  title = "What's your experience"
+  title = "Choose A Phase And Start Learning!"
 
   cards = [
     {
-      img: './assets/javascript-icon.png',
-      title: 'Beginner',
-      description: 'You have little to none knowledge about the language'
+      title: 'Phase 1',
+      img: './assets/phase 1.png',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     },
     {
-      img: './assets/javascript-icon.png',
-      title: 'Intermediate',
-      description: 'You have little to none knowledge about the language'
+      title: 'Phase 2',
+      img: './assets/phase 2.png',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     },
     {
-      img: './assets/javascript-icon.png',
-      title: 'Experienced',
-      description: 'You have little to none knowledge about the language'
+      title: 'Phase 3',
+      img: './assets/phase 3.png',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     }
   ]
 
