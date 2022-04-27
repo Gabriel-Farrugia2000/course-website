@@ -9,9 +9,4 @@ import { Question } from './question.model';
 export class AppComponent {
   title = 'thesis-project';
 
-  /*
-    console.log(question.getOptionsArray());
-    const isFine = question.isCorrectSequence('hello', 'world', 'teams');
-  }
-  */
 }

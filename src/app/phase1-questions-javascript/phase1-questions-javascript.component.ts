@@ -55,9 +55,12 @@ export class Phase1QuestionsJavascriptComponent {
   ]
 
   questions: Question[] = [];
-  currentQuestion : number = -1;
+  currentQuestion: number = -1;
+  incorrectTries: number = 0;
   placeHolder: string [] = [];
 
+  isnextDisabled = true;
+  ischeckDisabled = false;
   options: string [] = [];
 
 
@@ -82,17 +85,21 @@ export class Phase1QuestionsJavascriptComponent {
   ngOnInit(): void {
     this.questions = this.questionService.getAll();
     this.nextQuestion();
-
-    this.questions[0].isCorrect('{');
   }
 
   nextQuestion(){
     this.currentQuestion++;
     this.loadQuestion();
+    this.isnextDisabled = true;
+    this.ischeckDisabled = false;
+    this.incorrectTries = 0;
   }
+
   previousQuestion(){
     this.currentQuestion--;
     this.loadQuestion();
+    this.isnextDisabled = false;
+    this.ischeckDisabled = true;
   }
 
   loadQuestion()
@@ -109,11 +116,16 @@ export class Phase1QuestionsJavascriptComponent {
     
     const option = this.questions[this.currentQuestion];    
     if(option.isCorrectSequence(this.placeHolder))
+    {
       alert('good job')
-    else
+      this.isnextDisabled = false;
+    }else{
     alert('try again')
-    console.log(this.placeHolder);
-
+    this.incorrectTries++;
+    // Store incorrectTries list from whatever to string
+    localStorage.setItem("attempts tried",JSON.stringify(this.incorrectTries));
+    console.log("Incorrect tries:", this.incorrectTries);
+    }
   }
 
 }
