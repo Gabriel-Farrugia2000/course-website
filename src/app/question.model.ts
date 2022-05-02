@@ -2,6 +2,7 @@ export class Question
 {
     // Setting the default value in a class should make all fields optional.
     questionText: string = '';
+    
     options: { label: string; correct: boolean, order?: number }[] = [];
     description: string = ''; // this could be the reason that makes the answer correct / documentation / whatever
     

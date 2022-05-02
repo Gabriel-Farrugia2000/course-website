@@ -56,6 +56,7 @@ export class Phase1QuestionsJavascriptComponent {
 
   questions: Question[] = [];
   currentQuestion: number = -1;
+  reachedQuestion: number = -1;
   incorrectTries: number = 0;
   placeHolder: string [] = [];
   progress: number = 0;
@@ -90,23 +91,24 @@ export class Phase1QuestionsJavascriptComponent {
   }
 
   nextQuestion(){
-    this.currentQuestion++;
-    this.loadQuestion();
+    this.loadQuestion(this.currentQuestion + 1);
     this.isnextDisabled = true;
     this.ischeckDisabled = false;
     this.getprogressPercent();
   }
 
   previousQuestion(){
-    this.currentQuestion--;
-    this.loadQuestion();
+    this.loadQuestion(this.currentQuestion - 1);
     this.isnextDisabled = false;
     this.ischeckDisabled = true;
     this.getprogressPercent();
   }
 
-  loadQuestion()
+  loadQuestion(index: number)
   {
+    this.currentQuestion = index;
+    if (this.currentQuestion > this.reachedQuestion)
+      this.reachedQuestion = this.currentQuestion;
     /* Loads the question with the options as well and empties the placeholder*/
     if(this.currentQuestion == this.questions.length){
         this.isquizCompleted = true;
@@ -131,6 +133,14 @@ export class Phase1QuestionsJavascriptComponent {
     alert('try again')
     this.incorrectTries++;
     // Saves attemptList from whatever to string
+
+    const attempts: { id: number, attempts: number }[] = [ ];
+    // if there's no attempts for this question, create a new record
+    attempts.push({ id: this.currentQuestion, attempts: 0 });
+
+    const attempt = attempts.find(a => a.id == 0);
+    if (attempt) attempt.attempts++;
+
     localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));
     console.log("Incorrect tries:", this.incorrectTries);
      // @ts-ignore
