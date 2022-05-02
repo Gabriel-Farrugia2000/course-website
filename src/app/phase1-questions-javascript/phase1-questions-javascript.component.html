@@ -10,48 +10,61 @@
       </div>
 
       <div class="col-10">
-          <div class="content">
-              <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
-              <span class="material-icons">outlined_flag</span> 
+          <ng-container *ngIf="!isquizCompleted">
+            <div class="content">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+                <span class="material-icons">outlined_flag</span> 
 
-              <!-- Questions -->
-              <h2 class="mt-5">{{questions[currentQuestion]?.questionText}}</h2>
+                <!-- Questions -->
+                <h2 class="mt-5">{{questions[currentQuestion]?.questionText}}</h2>
+                  
+                <br>
+                <div class="example-container">
+                  <h2>Placeholder</h2>
                 
-              <br>
-              <div class="example-container">
-                <h2>Placeholder</h2>
-              
-                <div
-                  cdkDropList
-                  #placeHolderList="cdkDropList"
-                  [cdkDropListData]="placeHolder"
-                  [cdkDropListConnectedTo]="[optionsList]"
-                  class="example-list replace-only"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of placeHolder" cdkDrag>{{item}}</div>
+                  <div
+                    cdkDropList
+                    #placeHolderList="cdkDropList"
+                    [cdkDropListData]="placeHolder"
+                    [cdkDropListConnectedTo]="[optionsList]"
+                    class="example-list replace-only"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of placeHolder" cdkDrag>{{item}}</div>
+                  </div>
                 </div>
-              </div>
 
-              <br>
+                <br>
 
-              <div class="example-container">
-                <h2>Options</h2>
-              
-                <div
-                  cdkDropList
-                  #optionsList="cdkDropList"
-                  [cdkDropListData]="options"
-                  [cdkDropListConnectedTo]="[placeHolderList]"
-                  class="example-list"
-                  (cdkDropListDropped)="drop($event)">
-                  <div class="example-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
+                <div class="example-container">
+                  <h2>Options</h2>
+                
+                  <div
+                    cdkDropList
+                    #optionsList="cdkDropList"
+                    [cdkDropListData]="options"
+                    [cdkDropListConnectedTo]="[placeHolderList]"
+                    class="example-list"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
+                  </div>
                 </div>
-              </div>
-          
-            <button mat-raised-button color="primary" [disabled]="currentQuestion==0" (click)="previousQuestion()">Previous</button>
-            <button mat-raised-button color="primary" [disabled]="isnextDisabled" (click)="nextQuestion()">Next</button>
-            <button mat-raised-button color="primary" [disabled]="ischeckDisabled"(click)="validateAnswer()">Check</button>
-          </div>
+            
+              <button mat-raised-button color="primary" [disabled]="currentQuestion==0" (click)="previousQuestion()">Previous</button>
+              <button mat-raised-button color="primary" [disabled]="isnextDisabled" (click)="nextQuestion()">Next</button>
+              <button mat-raised-button color="primary" [disabled]="ischeckDisabled"(click)="validateAnswer()">Check</button>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="isquizCompleted">
+            <div class="result">
+              <h1>Congrats laba!! You finished this fcking shitty ass interactive quiz</h1>
+              <p>Below you will find how many times it took you to finish each lesson</p>
+              <p>Lesson 1, attempts: <b>{{incorrectTries}}</b></p>
+              <p>Make sure to revise those lessons that took some tries</p>
+            </div>
+          </ng-container>
       </div>
   </div>
 </div>

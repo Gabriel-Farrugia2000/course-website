@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Attribute, Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
@@ -58,9 +58,11 @@ export class Phase1QuestionsJavascriptComponent {
   currentQuestion: number = -1;
   incorrectTries: number = 0;
   placeHolder: string [] = [];
+  progress: number = 0;
+  isquizCompleted: boolean = false;
 
-  isnextDisabled = true;
-  ischeckDisabled = false;
+  isnextDisabled: boolean = true;
+  ischeckDisabled: boolean = false;
   options: string [] = [];
 
 
@@ -92,7 +94,7 @@ export class Phase1QuestionsJavascriptComponent {
     this.loadQuestion();
     this.isnextDisabled = true;
     this.ischeckDisabled = false;
-    this.incorrectTries = 0;
+    this.getprogressPercent();
   }
 
   previousQuestion(){
@@ -100,21 +102,27 @@ export class Phase1QuestionsJavascriptComponent {
     this.loadQuestion();
     this.isnextDisabled = false;
     this.ischeckDisabled = true;
+    this.getprogressPercent();
   }
 
   loadQuestion()
   {
     /* Loads the question with the options as well and empties the placeholder*/
+    if(this.currentQuestion == this.questions.length){
+        this.isquizCompleted = true;
+    }else{
+    this.incorrectTries = 0;
     const question = this.questions[this.currentQuestion];
     this.options = question.getOptionsArray();
     this.placeHolder = [];
   }
+}
 
   validateAnswer() {
     /* When check button is pressed, it checks the answer stated in the function isCorrect
     if yes, it will return true*/
     
-    const option = this.questions[this.currentQuestion];    
+    const option = this.questions[this.currentQuestion]; 
     if(option.isCorrectSequence(this.placeHolder))
     {
       alert('good job')
@@ -122,10 +130,22 @@ export class Phase1QuestionsJavascriptComponent {
     }else{
     alert('try again')
     this.incorrectTries++;
-    // Store incorrectTries list from whatever to string
-    localStorage.setItem("attempts tried",JSON.stringify(this.incorrectTries));
+    // Saves attemptList from whatever to string
+    localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));
     console.log("Incorrect tries:", this.incorrectTries);
+     // @ts-ignore
+    JSON.parse(localStorage.getItem("attemptsList"))
     }
   }
 
+  getprogressPercent(){
+    this.progress = (this.currentQuestion/this.questions.length) *100;
+    return this.progress;
+  }
+
+  displayContainer(){
+    if(this.currentQuestion == this.questions.length){
+      this.isquizCompleted = true;
+    }
+  }
 }

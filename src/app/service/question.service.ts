@@ -64,7 +64,8 @@ export class QuestionService
         correct: true
       }
     ]
-    ),new Question(
+    ),
+    new Question(
       'Test3:', 
     [
       {

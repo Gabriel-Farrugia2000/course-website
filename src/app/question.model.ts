@@ -27,27 +27,17 @@ export class Question
     // or isCorrect(['string', 'string', 'string'])
     // the parameters will always go into a single array called "answers"
     isCorrectSequence(answers: string[]): boolean {
-        // do the thing here.
-        // for (var i = 0; i < this.options.filter(o => o.id).length; i++){
-        //     var option = this.options.find((option) => option.id === answers);
-        //   }
-        //    if(i==this.options.filter(o => o.correct).length-1){
-        //     if (!option)
-        //       return true;
-        //     else
-        //       return false;
-        //     }
         for (var i = 0; i < answers.length; i++)
-        {
-            const answer = answers[i];
-            if (!this.isCorrect(answer)) return false;
-            
-            const item = this.options.find((option) => option.label === answer && i === option.order);
-            if (!item) return false;
-        }
+            {
+                const answer = answers[i];
+                if (!this.isCorrect(answer)) return false;
+                
+                const item = this.options.find((option) => option.label === answer && i === option.order);
+                if (!item) return false;
+            }
 
-        const correctAnswers = this.options.filter(option => option.correct).length;
-        return answers.length === correctAnswers;
+            const correctAnswers = this.options.filter(option => option.correct).length;
+            return answers.length === correctAnswers;
         
         // loop through the answers array
         // if the order doesn't match or is incorrect
