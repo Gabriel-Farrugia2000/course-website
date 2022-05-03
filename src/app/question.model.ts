@@ -1,16 +1,21 @@
 export class Question
 {
     // Setting the default value in a class should make all fields optional.
+    questionID: number;
     questionText: string = '';
-    
+    attempts: number;
     options: { label: string; correct: boolean, order?: number }[] = [];
     description: string = ''; // this could be the reason that makes the answer correct / documentation / whatever
     
     constructor(
+        questionID: number,
         questionText: string,
+        attempts: number,
         options: { label: string; correct: boolean; order?: number }[]
     ) {
+        this.questionID = questionID;
         this.questionText = questionText;
+        this.attempts = attempts;
         this.options = options;
     }
     
@@ -40,21 +45,21 @@ export class Question
             const correctAnswers = this.options.filter(option => option.correct).length;
             return answers.length === correctAnswers;
         
-        // loop through the answers array
-        // if the order doesn't match or is incorrect
-        // return false
-
-        // after the loop has ended
-        // return true
     }
     
-    // Checks that a single answer is correct.
+    // Checks that the answer is correct.
     isCorrect(answer: string) {
         const option = this.options.find((option) => option.label === answer);
         if (!option) return false;
         return option.correct;
     }
 
+    increaseAttempts(){
+        const attempt = this.attempts.find(x => x.questionID == 1);
+        if (attempt) attempt.attempts++;
+    }
+
+    // this can be deleted
     correctLength(): number
     {
         return this.options.filter(o => o.correct).length;

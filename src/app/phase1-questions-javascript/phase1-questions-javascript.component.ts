@@ -107,13 +107,13 @@ export class Phase1QuestionsJavascriptComponent {
   loadQuestion(index: number)
   {
     this.currentQuestion = index;
-    if (this.currentQuestion > this.reachedQuestion)
-      this.reachedQuestion = this.currentQuestion;
-    /* Loads the question with the options as well and empties the placeholder*/
+    if(this.currentQuestion > this.reachedQuestion)
+        this.reachedQuestion = this.currentQuestion;
+
     if(this.currentQuestion == this.questions.length){
         this.isquizCompleted = true;
     }else{
-    this.incorrectTries = 0;
+    /* Loads the question with the options as well and empties the placeholder*/
     const question = this.questions[this.currentQuestion];
     this.options = question.getOptionsArray();
     this.placeHolder = [];
@@ -131,20 +131,15 @@ export class Phase1QuestionsJavascriptComponent {
       this.isnextDisabled = false;
     }else{
     alert('try again')
-    this.incorrectTries++;
-    // Saves attemptList from whatever to string
-
-    const attempts: { id: number, attempts: number }[] = [ ];
-    // if there's no attempts for this question, create a new record
-    attempts.push({ id: this.currentQuestion, attempts: 0 });
-
-    const attempt = attempts.find(a => a.id == 0);
-    if (attempt) attempt.attempts++;
-
+    const attempts = this.questions[this.currentQuestion];
+    this.incorrectTries = attempts.increaseAttempts();
+    
+    /*
     localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));
     console.log("Incorrect tries:", this.incorrectTries);
      // @ts-ignore
     JSON.parse(localStorage.getItem("attemptsList"))
+    */
     }
   }
 

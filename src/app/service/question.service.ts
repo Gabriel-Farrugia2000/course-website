@@ -8,7 +8,9 @@ export class QuestionService
 {
   questions: Question[] = [
     new Question(
+      1,
       'Put these in an order that creates a for loop:', 
+      0,
     [
       {
         order: 0,
@@ -37,7 +39,9 @@ export class QuestionService
     ]
     ),
     new Question(
+      2,
       'Test2:', 
+      0,
     [
       {
         order: 0,
@@ -66,7 +70,9 @@ export class QuestionService
     ]
     ),
     new Question(
-      'Test3:', 
+      3,
+      'Test3:',
+      0,
     [
       {
         order: 0,
