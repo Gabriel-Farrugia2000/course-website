@@ -55,8 +55,10 @@ export class Question
     }
 
     increaseAttempts(){
+        /*
         const attempt = this.attempts.find(x => x.questionID == 1);
         if (attempt) attempt.attempts++;
+        */
     }
 
     // this can be deleted

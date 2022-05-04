@@ -131,9 +131,11 @@ export class Phase1QuestionsJavascriptComponent {
       this.isnextDisabled = false;
     }else{
     alert('try again')
+    /*
     const attempts = this.questions[this.currentQuestion];
     this.incorrectTries = attempts.increaseAttempts();
-    
+    */
+  
     /*
     localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));
     console.log("Incorrect tries:", this.incorrectTries);
