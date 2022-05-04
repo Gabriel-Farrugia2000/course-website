@@ -53,17 +53,4 @@ export class Question
         if (!option) return false;
         return option.correct;
     }
-
-    increaseAttempts(){
-        /*
-        const attempt = this.attempts.find(x => x.questionID == 1);
-        if (attempt) attempt.attempts++;
-        */
-    }
-
-    // this can be deleted
-    correctLength(): number
-    {
-        return this.options.filter(o => o.correct).length;
-    }
 }

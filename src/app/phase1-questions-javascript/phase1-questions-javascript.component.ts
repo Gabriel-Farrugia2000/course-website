@@ -57,7 +57,7 @@ export class Phase1QuestionsJavascriptComponent {
   questions: Question[] = [];
   currentQuestion: number = -1;
   reachedQuestion: number = -1;
-  incorrectTries: number = 0;
+  incorrectTries: number [] = [];
   placeHolder: string [] = [];
   progress: number = 0;
   isquizCompleted: boolean = false;
@@ -131,10 +131,15 @@ export class Phase1QuestionsJavascriptComponent {
       this.isnextDisabled = false;
     }else{
     alert('try again')
+    const attempt = this.questions[this.currentQuestion];
+    attempt.attempts++;
+    console.log(attempt.attempts)
+
     /*
-    const attempts = this.questions[this.currentQuestion];
-    this.incorrectTries = attempts.increaseAttempts();
-    */
+    const attempt = this.questions[this.currentQuestion];
+    this.incorrectTries = attempt.increaseAttempts();
+      
+
   
     /*
     localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));

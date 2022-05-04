@@ -62,7 +62,11 @@
             <div class="result">
               <h1>Congrats laba!! You finished this fcking shitty ass interactive quiz</h1>
               <p>Below you will find how many times it took you to finish each lesson</p>
-              <p>Lesson 1, attempts: <b>{{incorrectTries}}</b></p>
+              <ul>
+                <li *ngFor="let test of questions">
+                    <p>Lesson: {{test.questionID}} attempts {{test.attempts}}</p>
+                </li>
+              </ul>
               <p>Make sure to revise those lessons that took some tries</p>
             </div>
           </ng-container>
