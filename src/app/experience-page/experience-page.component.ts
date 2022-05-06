@@ -6,14 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./experience-page.component.css']
 })
 export class ExperiencePageComponent implements OnInit {
+
+  isDisabled = true;
+
   title = "Choose A Phase And Start Learning!"
 
   cards = [
-    {
-      title: 'Phase 1',
-      img: './assets/phase 1.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
     {
       title: 'Phase 2',
       img: './assets/phase 2.png',

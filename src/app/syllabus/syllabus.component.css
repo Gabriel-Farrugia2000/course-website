@@ -54,8 +54,3 @@
     text-align: center;
     color: white;
 } 
-
-.disable{
-    opacity: 60%;
-    pointer-events: none;
-}

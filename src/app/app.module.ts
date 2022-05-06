@@ -20,6 +20,7 @@ import { RewardsComponent } from './rewards/rewards.component';
 import { Phase1QuestionsJavascriptComponent } from './phase1-questions-javascript/phase1-questions-javascript.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { SyllabusComponent } from './syllabus/syllabus.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ExperiencePageComponent,
     RewardsComponent,
-    Phase1QuestionsJavascriptComponent
+    Phase1QuestionsJavascriptComponent,
+    SyllabusComponent
   ],
   imports: [
     BrowserModule,

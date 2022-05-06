@@ -134,19 +134,6 @@ export class Phase1QuestionsJavascriptComponent {
     const attempt = this.questions[this.currentQuestion];
     attempt.attempts++;
     console.log(attempt.attempts)
-
-    /*
-    const attempt = this.questions[this.currentQuestion];
-    this.incorrectTries = attempt.increaseAttempts();
-      
-
-  
-    /*
-    localStorage.setItem("attemptsList",JSON.stringify(this.incorrectTries));
-    console.log("Incorrect tries:", this.incorrectTries);
-     // @ts-ignore
-    JSON.parse(localStorage.getItem("attemptsList"))
-    */
     }
   }
 
