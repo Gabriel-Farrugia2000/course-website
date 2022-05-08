@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   fun = "fun"
   interactive = "interactive"
-  introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar leo eget arcu iaculis dictum. Curabitur pellentesque sapien vitae libero porta, sed tristique lorem malesuada. Aliquam et odio nulla. Sed ut lacus urna. Phasellus ac eros semper, commodo enim vitae, consequat est. Nullam aliquet eros eget dui placerat imperdiet. Aenean eu ipsum fermentum ipsum venenatis molestie. "
+  introText = "Learning sometimes might be boring and not fun because most of the lessons nowadays doesn't let the learner interact with the lesson itself but with Codence it might change the way of how you might look at learning new things through it's fun and approachable way. "
+  paragraphText = "Codence is an interactive programming course website where learners can learn a programming language while interacting with the lesson itself because we believe that when learners get to interact with the lesson they tend to learn more and even keep remembering what they have learned."
 
   title2 = "What Is Codence?"
 

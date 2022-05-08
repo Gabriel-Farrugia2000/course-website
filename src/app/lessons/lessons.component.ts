@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lessons.component.css']
 })
 export class LessonsComponent implements OnInit {
-  introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar leo eget arcu iaculis dictum. Curabitur pellentesque sapien vitae libero porta, sed tristique lorem malesuada. Aliquam et odio nulla. Sed ut lacus urna. Phasellus ac eros semper, commodo enim vitae, consequat est. Nullam aliquet eros eget dui placerat imperdiet. Aenean eu ipsum fermentum ipsum venenatis molestie. "
+  introText = "JavaScript is a dynamic programming language that's used for web development, in web applications, for game development, and lots more. It allows you to implement dynamic features on web pages that cannot be done with only HTML and CSS. "
+  introText2 = "JavaScript is one of the most popular coding languages, and together with HTML and CSS, it forms the base of modern web development. HTML codes the structure of a website, CSS dictates its style, and JavaScript enables its interactivity. "
 
   constructor() { }
 
