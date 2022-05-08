@@ -42,7 +42,7 @@ export class QuestionService
     new Question(
       1,
       2,
-      'Test2:', 
+      'Lesson2:', 
       0,
     [
       {
@@ -74,7 +74,7 @@ export class QuestionService
     new Question(
       1,
       3,
-      'Test3:',
+      'Lesson3:',
       0,
     [
       {
@@ -106,7 +106,7 @@ export class QuestionService
     new Question(
       1,
       4,
-      'Test4:',
+      'Lesson4:',
       0,
     [
       {
@@ -138,7 +138,7 @@ export class QuestionService
     new Question(
       1,
       5,
-      'Test5:',
+      'Lesson5:',
       0,
     [
       {
@@ -170,7 +170,7 @@ export class QuestionService
     new Question(
       1,
       6,
-      'Test6:',
+      'Lesson6:',
       0,
     [
       {
@@ -202,7 +202,7 @@ export class QuestionService
     new Question(
       1,
       7,
-      'Test7:',
+      'Lesson7:',
       0,
     [
       {
@@ -234,7 +234,7 @@ export class QuestionService
     new Question(
       1,
       8,
-      'Test8:',
+      'Lesson8:',
       0,
     [
       {
@@ -266,7 +266,7 @@ export class QuestionService
     new Question(
       1,
       9,
-      'Test9:',
+      'Lesson9:',
       0,
     [
       {
@@ -298,7 +298,7 @@ export class QuestionService
     new Question(
       1,
       10,
-      'Test10:',
+      'Lesson10:',
       0,
     [
       {
