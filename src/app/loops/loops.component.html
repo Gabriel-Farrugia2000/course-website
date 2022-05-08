@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="title">
+            <h1>{{title}}<hr></h1>
+        </div>
+
+        <div class="card-group">
+            <mat-card  *ngFor="let lesson of questions">
+                <button class="list-group-item list-group-item-action p-3 text-center border-bottom" [routerLink]="['/syllabus/loops/',lesson.questionID]">Lesson {{lesson.questionID}}</button>
+            </mat-card>
+        </div>
+ 

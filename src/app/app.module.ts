@@ -21,6 +21,8 @@ import { Phase1QuestionsJavascriptComponent } from './phase1-questions-javascrip
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SyllabusComponent } from './syllabus/syllabus.component';
+import { LessonsOptionComponent } from './lessons-option/lessons-option.component';
+import { LoopsComponent } from './loops/loops.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SyllabusComponent } from './syllabus/syllabus.component';
     ExperiencePageComponent,
     RewardsComponent,
     Phase1QuestionsJavascriptComponent,
-    SyllabusComponent
+    SyllabusComponent,
+    LessonsOptionComponent,
+    LoopsComponent
   ],
   imports: [
     BrowserModule,

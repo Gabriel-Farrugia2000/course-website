@@ -6,35 +6,34 @@ import { HomeComponent } from './home/home.component';
 import { ExperiencePageComponent } from './experience-page/experience-page.component';
 import { Phase1QuestionsJavascriptComponent } from './phase1-questions-javascript/phase1-questions-javascript.component';
 import { SyllabusComponent } from './syllabus/syllabus.component';
+import { LessonsOptionComponent } from './lessons-option/lessons-option.component';
+import { LoopsComponent } from './loops/loops.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent },
   {path: 'lessons', component: LessonsComponent },
-  {path: 'syllabus', component: SyllabusComponent },
+  {path: 'syllabus',
+  children: [
+      {path: '', component: SyllabusComponent},
+      {path: 'functions',
+        children: [
+          {path: '', component: LessonsOptionComponent},
+          {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
+        ]
+        },
+      {path: 'loops',
+      children: [
+        {path: '', component: LoopsComponent},
+        {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
+      ]
+      },
+    ]
+  },
   {path: 'rewards', component: RewardsComponent },
-  {path: "experience-page", 
-    children: [
-    {
-      path: '',
-      component: ExperiencePageComponent
-    },
-    {
-      path: ':lessonID',
-      children:[
-        {
-          //score by ID
-          path: '',
-          children:[
-            {
-              path: '',
-              loadChildren: () => import('../score-details/score-details.module').then(m => m.ScoreDetailsPageModule)
-            }
-    }
-  path: 'phase1-questions-javascript', component: Phase1QuestionsJavascriptComponent }
+  {path: "experience-page", component: ExperiencePageComponent}
+
 ]
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

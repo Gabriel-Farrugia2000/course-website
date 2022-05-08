@@ -1,5 +1,6 @@
 <div class="container-fluid p-0">
   <div class="row m-0">
+    <!--
       <div class="col-2 p-0">
           <div class="sidebar">
               <h1>Phase 1</h1>
@@ -8,6 +9,7 @@
               </div>
           </div>
       </div>
+    -->
 
       <div class="col-10">
           <ng-container *ngIf="!isquizCompleted">
@@ -60,7 +62,7 @@
 
           <ng-container *ngIf="isquizCompleted">
             <div class="result">
-              <h1>Congrats laba!! You finished this fcking shitty ass interactive quiz</h1>
+              <h1>Congrats!! You finished this interactive quiz</h1>
               <p>Below you will find how many times it took you to finish each lesson</p>
               <ul>
                 <li *ngFor="let test of questions">
@@ -68,6 +70,7 @@
                 </li>
               </ul>
               <p>Make sure to revise those lessons that took some tries</p>
+              <button mat-raised-button color="primary" routerLink="/syllabus">Syllabus</button>
             </div>
           </ng-container>
       </div>

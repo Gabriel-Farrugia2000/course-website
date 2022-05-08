@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router} from '@angular/router'
 
 @Component({
   selector: 'app-syllabus',
@@ -9,30 +10,15 @@ export class SyllabusComponent implements OnInit {
 
   title = "Choose A Syllabus"
 
-  cards = [
-    {
-      title: 'Functions',
-      img: './assets/phase 2.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      title: 'Loops',
-      img: './assets/phase 3.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      path: 'lessons'
-    },
-    {
-      title: 'Variables',
-      img: './assets/phase 3.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      path: 'lessons'
-    }
-  ]
-
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit(): void {
   }
 
+  /*
+  lessons(){
+    this.router.navigate(['lessons-option'], {relativeTo:this.route});
+  }
+  */
 }
