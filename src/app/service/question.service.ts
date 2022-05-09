@@ -372,7 +372,7 @@ export class QuestionService
   {
     //converts questions to a different type of array
     const attempts = this.questions.map(q => {return { id: q.questionID, attempts: q.attempts}});
-    return this.questions.filter(i => i.questionID == lessonID);
+    return this.questions.filter(i => i.slug == lessonID);
   }
 
   getSyllabus(syllabusID: number): Question[]

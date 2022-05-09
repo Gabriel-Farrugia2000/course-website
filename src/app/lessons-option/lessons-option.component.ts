@@ -13,11 +13,15 @@ export class LessonsOptionComponent implements OnInit {
 
   title = "Choose a lesson"
   questions: Question[] = [];
+  syllabusID: number = -1;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private questionService: QuestionService) { }
 
   ngOnInit(): void {
-    this.questions = this.questionService.getSyllabus(1);
+    this.syllabusID = this.route.snapshot.params['syllabusID'];
+    this.questions = this.questionService.getSyllabus(this.syllabusID);
   }
 
 

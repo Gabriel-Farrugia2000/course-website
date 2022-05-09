@@ -16,18 +16,18 @@ const routes: Routes = [
   {path: 'syllabus',
   children: [
       {path: '', component: SyllabusComponent},
-      {path: 'functions',
+      {path: ':syllabusID',
         children: [
           {path: '', component: LessonsOptionComponent},
           {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
         ]
         },
-      {path: 'loops',
-      children: [
-        {path: '', component: LoopsComponent},
-        {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
-      ]
-      },
+      // {path: 'loops',
+      // children: [
+      //   {path: '', component: LoopsComponent},
+      //   {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
+      // ]
+      // },
     ]
   },
   {path: 'rewards', component: RewardsComponent },

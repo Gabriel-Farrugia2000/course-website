@@ -47,6 +47,7 @@ export class Phase1QuestionsJavascriptComponent {
   constructor(private questionService: QuestionService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
+    this.syllabusID=parseInt(this.route.snapshot.params['syllabusID']);
     this.lessonID=parseInt(this.route.snapshot.params['lessonID']);
     this.questions = this.questionService.getSyllabus(this.syllabusID);
     this.lessonID=parseInt(this.route.snapshot.params['lessonID']);
@@ -56,21 +57,25 @@ export class Phase1QuestionsJavascriptComponent {
       this.router.navigate(['syllabus/lessons'])
     }
     */
-    this.nextQuestion();
+    // this.nextQuestion();
+    this.loadQuestion(this.lessonID);
   }
 
   nextQuestion(){
-    this.loadQuestion(this.currentQuestion + 1);
-    this.isnextDisabled = true;
-    this.ischeckDisabled = false;
-    this.getprogressPercent();
+    this.router.navigate(['/syllabus/', this.syllabusID, this.lessonID + 1]);
+    // this.loadQuestion(this.currentQuestion + 1);
+    // this.isnextDisabled = true;
+    // this.ischeckDisabled = false;
+    // this.getprogressPercent();
   }
 
   previousQuestion(){
-    this.loadQuestion(this.currentQuestion - 1);
-    this.isnextDisabled = false;
-    this.ischeckDisabled = true;
-    this.getprogressPercent();
+    this.router.navigate(['/syllabus/', this.syllabusID, this.currentQuestion - 1]);
+
+    // this.loadQuestion(this.currentQuestion - 1);
+    // this.isnextDisabled = false;
+    // this.ischeckDisabled = true;
+    // this.getprogressPercent();
   }
 
   loadQuestion(index: number)
