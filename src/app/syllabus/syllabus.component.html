@@ -4,28 +4,15 @@
             <h1>{{title}}<hr></h1>
         </div>
 
-        <div class="card-group" >
-            <mat-card routerLink="/syllabus/functions">
-                <mat-card-content>
-                    <mat-card-title>Functions</mat-card-title>
-                    </mat-card-content>
-            </mat-card>
-            <mat-card routerLink="#">
-                <mat-card-content>
-                    <mat-card-title>Loops</mat-card-title>
-                    </mat-card-content>
-            </mat-card>
-            <mat-card routerLink="/syllabus/variables">
-                <mat-card-content>
-                    <mat-card-title>Variables</mat-card-title>
-                    </mat-card-content>
+        <div class="card-group">
+            <mat-card [routerLink]="['/syllabus/', lesson.slug]" *ngFor="let lesson of lessons">
+                <mat-card-title>{{lesson.name}}</mat-card-title>
             </mat-card>
         </div>
-    </div>
 
     <!-- Just for reference, if you might have a line break in a string -->
     <div [innerHTML]=""></div>
-</div>
+
 
 <!--
 Topic (Loops) -> List of Lessons -> Description + Question page

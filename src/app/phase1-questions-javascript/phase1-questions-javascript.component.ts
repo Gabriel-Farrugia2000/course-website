@@ -3,6 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Lesson } from '../syllabus';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class Phase1QuestionsJavascriptComponent {
 
   syllabusID: number = 0;
   lessonID: number = 0;
-  questions: Question[] = [];
+  slug!: string;
+  lessonSlug!: string;
+  questions: Lesson[] = [];
   currentQuestion: number = -1;
   reachedQuestion: number = -1;
   incorrectTries: number [] = [];
@@ -47,9 +50,13 @@ export class Phase1QuestionsJavascriptComponent {
   constructor(private questionService: QuestionService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
-    this.syllabusID=parseInt(this.route.snapshot.params['syllabusID']);
-    this.lessonID=parseInt(this.route.snapshot.params['lessonID']);
-    this.questions = this.questionService.getSyllabus(this.syllabusID);
+    this.slug = this.route.snapshot.params['slug'];
+    this.lessonSlug = this.route.snapshot.params['lessonSlug'];
+    this.questions = this.questionService.getLesson(this.slug, this.lessonSlug);
+    /*
+    this.syllabusID=parseInt(this.route.snapshot.params['slug']);
+    this.lessons = this.questionService.getLesson(this.slug);
+    /*
     this.lessonID=parseInt(this.route.snapshot.params['lessonID']);
     this.questions = this.questionService.getLesson(this.lessonID);
     /*

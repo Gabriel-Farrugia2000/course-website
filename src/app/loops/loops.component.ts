@@ -16,7 +16,9 @@ export class LoopsComponent implements OnInit {
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+    /*
     this.questions = this.questionService.getSyllabus(2);
+    */
   }
 
 

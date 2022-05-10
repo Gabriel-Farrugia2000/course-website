@@ -16,10 +16,10 @@ const routes: Routes = [
   {path: 'syllabus',
   children: [
       {path: '', component: SyllabusComponent},
-      {path: ':syllabusID',
+      {path: ':slug',
         children: [
           {path: '', component: LessonsOptionComponent},
-          {path: ':lessonID', component:Phase1QuestionsJavascriptComponent}
+          {path: ':name', component:Phase1QuestionsJavascriptComponent}
         ]
         },
       // {path: 'loops',

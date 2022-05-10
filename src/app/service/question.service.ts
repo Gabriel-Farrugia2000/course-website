@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Question } from '../question.model';
+import { Lesson, lessons, Syllabus } from '../syllabus';
 
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionService
-{
+export class QuestionService{
+
+  syllabus: Syllabus[] = lessons;
+  
+  /*
   questions: Question[] = [
     new Question(
       1,
@@ -360,25 +364,40 @@ export class QuestionService
     ]
     ),
   ];
+
   
-  getAll(): Question[]
+  */
+  
+  getAll(): Syllabus[]
   {
-    //converts questions to a different type of array
-    const attempts = this.questions.map(q => {return { id: q.questionID, attempts: q.attempts}});
-    return this.questions
+      return this.syllabus;
   }
 
-  getLesson(lessonID: number): Question[]
+
+
+  
+  getLessons(slug: string): Lesson[]
   {
-    //converts questions to a different type of array
-    const attempts = this.questions.map(q => {return { id: q.questionID, attempts: q.attempts}});
-    return this.questions.filter(i => i.slug == lessonID);
+    const syllabus = this.syllabus.find(i => i.slug === slug);
+    if (syllabus === undefined) return [];
+    return syllabus.lessons;
   }
 
+  getLesson(slug: string, lessonSlug: string): Lesson[]
+  {
+    const lesson = this.getLessons(slug).find(i => i.slug === lessonSlug);
+    if (lesson === undefined) return [];
+    return lesson.lessons;
+    //return lessons.find(i => i.slug === lessonSlug);
+  }
+
+  /*
   getSyllabus(syllabusID: number): Question[]
   {
     //converts questions to a different type of array
     const attempts = this.questions.map(q => {return { id: q.questionID, attempts: q.attempts}});
     return this.questions.filter(i => i.syllabusID == syllabusID);
   }
+  */
+  
 }

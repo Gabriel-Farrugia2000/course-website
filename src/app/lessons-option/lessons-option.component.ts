@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
 import { ActivatedRoute } from '@angular/router';
+import { Lesson } from '../syllabus';
 
 
 @Component({
@@ -12,16 +13,16 @@ import { ActivatedRoute } from '@angular/router';
 export class LessonsOptionComponent implements OnInit {
 
   title = "Choose a lesson"
-  questions: Question[] = [];
-  syllabusID: number = -1;
+  questions: Lesson[] = [];
+  slug!: string;
 
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionService) { }
 
   ngOnInit(): void {
-    this.syllabusID = this.route.snapshot.params['syllabusID'];
-    this.questions = this.questionService.getSyllabus(this.syllabusID);
+    this.slug = this.route.snapshot.params['slug'];
+    this.questions = this.questionService.getLessons(this.slug);
   }
 
 

@@ -92,9 +92,7 @@ export const lessons: Syllabus[] = [{
       }
   ]
 }
-]
+];
 
-// {
-//     name: 'Loops'
-// }
+
 
