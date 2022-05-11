@@ -383,11 +383,10 @@ export class QuestionService{
     return syllabus.lessons;
   }
 
-  getLesson(slug: string, lessonSlug: string): Lesson[]
+  getLesson(slug: string, lessonSlug: string): Lesson | undefined
   {
-    const lesson = this.getLessons(slug).find(i => i.slug === lessonSlug);
-    if (lesson === undefined) return [];
-    return lesson.lessons;
+    const lesson = this.getLessons(slug);
+    return lesson.find(i => i.slug === lessonSlug);
     //return lessons.find(i => i.slug === lessonSlug);
   }
 

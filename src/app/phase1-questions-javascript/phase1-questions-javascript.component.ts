@@ -3,7 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Lesson } from '../syllabus';
+import { Lesson, lessons, Syllabus } from '../syllabus';
 
 
 @Component({
@@ -18,13 +18,14 @@ export class Phase1QuestionsJavascriptComponent {
   lessonID: number = 0;
   slug!: string;
   lessonSlug!: string;
-  questions: Lesson[] = [];
+  questions: Question[] = [];
   currentQuestion: number = -1;
   reachedQuestion: number = -1;
   incorrectTries: number [] = [];
   placeHolder: string [] = [];
   progress: number = 0;
   isquizCompleted: boolean = false;
+  lesson: Lesson | undefined;
 
   isnextDisabled: boolean = true;
   ischeckDisabled: boolean = false;
@@ -51,8 +52,10 @@ export class Phase1QuestionsJavascriptComponent {
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.params['slug'];
-    this.lessonSlug = this.route.snapshot.params['lessonSlug'];
-    this.questions = this.questionService.getLesson(this.slug, this.lessonSlug);
+    this.lessonSlug = this.route.snapshot.params['name'];
+    this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
+    console.log(this.lesson);
+    
     /*
     this.syllabusID=parseInt(this.route.snapshot.params['slug']);
     this.lessons = this.questionService.getLesson(this.slug);
