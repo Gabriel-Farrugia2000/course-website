@@ -373,9 +373,6 @@ export class QuestionService{
       return this.syllabus;
   }
 
-
-
-  
   getLessons(slug: string): Lesson[]
   {
     const syllabus = this.syllabus.find(i => i.slug === slug);

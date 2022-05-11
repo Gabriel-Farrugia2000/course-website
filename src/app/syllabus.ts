@@ -50,7 +50,40 @@ export const lessons: Syllabus[] = [{
                     }
                   ]
             )
-        }
+        },
+        {
+          name: 'Lesson 2',
+          slug: 'lesson-2',
+          question: new Question(
+              'Test2',
+              [
+                  {
+                    order: 0,
+                    label: 'for (var i = 0; i < 10; i++)',
+                    correct: true
+                  },
+                  {
+                    order: 1,
+                    label: '{',
+                    correct: true
+                  },
+                  {
+                    order: 2,
+                    label: 'console.log(i);',
+                    correct: true
+                  },
+                  {
+                    label: 'console.log(j);',
+                    correct: false
+                  },
+                  {
+                    order: 3,
+                    label: '}',
+                    correct: true
+                  }
+                ]
+          )
+      }
     ]
 },
 {

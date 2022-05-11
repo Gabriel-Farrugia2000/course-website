@@ -14,8 +14,7 @@ import { Lesson, lessons, Syllabus } from '../syllabus';
 export class Phase1QuestionsJavascriptComponent {
 
 
-  syllabusID: number = 0;
-  lessonID: number = 0;
+
   slug!: string;
   lessonSlug!: string;
   questions: Question[] = [];
@@ -26,11 +25,11 @@ export class Phase1QuestionsJavascriptComponent {
   progress: number = 0;
   isquizCompleted: boolean = false;
   lesson: Lesson | undefined;
+  
 
   isnextDisabled: boolean = true;
-  ischeckDisabled: boolean = false;
+  ischeckDisabled: boolean = false; 
   options: string [] = [];
-
 
   drop(event: CdkDragDrop<string[]>) {
     
@@ -54,7 +53,19 @@ export class Phase1QuestionsJavascriptComponent {
     this.slug = this.route.snapshot.params['slug'];
     this.lessonSlug = this.route.snapshot.params['name'];
     this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
+    this.loadQuestion();
     console.log(this.lesson);
+    
+    
+    //this.options = (this.lesson as Lesson).question.getOptionsArray();
+   
+      //this.options = this.lesson.question.getOptionsArray();
+
+    //this.options = question.getOptionsArray(this.options);
+    //this.placeHolder = [];
+    // const question = this.questions[this.currentQuestion];
+    // this.options = question.getOptionsArray();
+    //console.log(this.options);
     
     /*
     this.syllabusID=parseInt(this.route.snapshot.params['slug']);
@@ -68,19 +79,21 @@ export class Phase1QuestionsJavascriptComponent {
     }
     */
     // this.nextQuestion();
-    this.loadQuestion(this.lessonID);
+    //this.loadQuestion(this.lessonID);
   }
 
   nextQuestion(){
-    this.router.navigate(['/syllabus/', this.syllabusID, this.lessonID + 1]);
-    // this.loadQuestion(this.currentQuestion + 1);
+    //this.lessonSlug++;
+    console.log(this.lessonSlug);
+    this.lesson+1;
+    //this.loadQuestion(this.currentQuestion + 1);
     // this.isnextDisabled = true;
     // this.ischeckDisabled = false;
     // this.getprogressPercent();
   }
 
   previousQuestion(){
-    this.router.navigate(['/syllabus/', this.syllabusID, this.currentQuestion - 1]);
+    //this.router.navigate(['/syllabus/', this.slug,  this.lessonSlug- 1]);
 
     // this.loadQuestion(this.currentQuestion - 1);
     // this.isnextDisabled = false;
@@ -88,36 +101,43 @@ export class Phase1QuestionsJavascriptComponent {
     // this.getprogressPercent();
   }
 
-  loadQuestion(index: number)
+  loadQuestion()
   {
-    this.currentQuestion = index;
-    if(this.currentQuestion > this.reachedQuestion)
-        this.reachedQuestion = this.currentQuestion;
+    if (typeof(this.lesson) === 'object')
+    {
+      const options = this.lesson.question;
+      this.options = options.getOptionsArray();
+    }
+    // if(this.currentQuestion > this.reachedQuestion)
+    //     this.reachedQuestion = this.currentQuestion;
 
-    if(this.currentQuestion == this.questions.length){
-        this.isquizCompleted = true;
-    }else{
+    // if(this.currentQuestion == this.questions.length){
+    //     this.isquizCompleted = true;
+    // }else{
     /* Loads the question with the options as well and empties the placeholder*/
-    const question = this.questions[this.currentQuestion];
-    this.options = question.getOptionsArray();
-    this.placeHolder = [];
-  }
+    // const question = this.questions[this.currentQuestion];
+    // this.options = question.getOptionsArray();
+    // this.placeHolder = [];
+  //}
 }
 
   validateAnswer() {
     /* When check button is pressed, it checks the answer stated in the function isCorrect
     if yes, it will return true*/
     
-    const option = this.questions[this.currentQuestion]; 
-    if(option.isCorrectSequence(this.placeHolder))
+    if (typeof(this.lesson) === 'object')
     {
-      alert('good job')
-      this.isnextDisabled = false;
-    }else{
-    alert('try again')
-    const attempt = this.questions[this.currentQuestion];
-    attempt.attempts++;
-    console.log(attempt.attempts)
+      const options = this.lesson.question;
+      if(options.isCorrectSequence(this.placeHolder))
+      {
+        alert('good job')
+        this.isnextDisabled = false;
+      }else{
+      alert('try again')
+      const attempt = this.questions[this.currentQuestion];
+      attempt.attempts++;
+      console.log(attempt.attempts)
+      }
     }
   }
 
