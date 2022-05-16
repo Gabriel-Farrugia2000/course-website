@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: ':slug',
         children: [
           {path: '', component: LessonsOptionComponent},
-          {path: ':name', component:Phase1QuestionsJavascriptComponent}
+          {path: ':lessonSlug', component:Phase1QuestionsJavascriptComponent}
         ]
         },
       // {path: 'loops',

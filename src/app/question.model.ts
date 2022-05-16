@@ -2,14 +2,17 @@ export class Question
 {
     // Setting the default value in a class should make all fields optional.
     questionText: string = '';
+    questionID: number;
     attempts: number;
     options: { label: string; correct: boolean, order?: number }[] = [];
     description: string = ''; // this could be the reason that makes the answer correct / documentation / whatever
     
     constructor(
+        questionID: number,
         questionText: string,
         options: { label: string; correct: boolean; order?: number }[]
     ) {
+        this.questionID = questionID;
         this.questionText = questionText;
         this.attempts = 0;
         this.options = options;

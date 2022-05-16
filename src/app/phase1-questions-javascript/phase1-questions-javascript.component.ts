@@ -4,6 +4,7 @@ import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Lesson, lessons, Syllabus } from '../syllabus';
+import { findIndex } from 'rxjs';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Lesson, lessons, Syllabus } from '../syllabus';
 export class Phase1QuestionsJavascriptComponent {
 
 
-
+  questionID: number = 0;
   slug!: string;
   lessonSlug!: string;
   questions: Question[] = [];
@@ -25,6 +26,8 @@ export class Phase1QuestionsJavascriptComponent {
   progress: number = 0;
   isquizCompleted: boolean = false;
   lesson: Lesson | undefined;
+  lessons: Lesson[] = [];
+  nextSlug: string = '';
   
 
   isnextDisabled: boolean = true;
@@ -51,14 +54,17 @@ export class Phase1QuestionsJavascriptComponent {
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.params['slug'];
-    this.lessonSlug = this.route.snapshot.params['name'];
+    this.lessonSlug = this.route.snapshot.params['lessonSlug'];
+    this.lessons = this.questionService.getLessons(this.slug);
     this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
     this.loadQuestion();
-    console.log(this.lesson);
+
     
+    // const currentLesson = this.lessons.findIndex(s => s.slug === this.lesson.findIndex( ))
+  
     
     //this.options = (this.lesson as Lesson).question.getOptionsArray();
-   
+
       //this.options = this.lesson.question.getOptionsArray();
 
     //this.options = question.getOptionsArray(this.options);
@@ -83,9 +89,23 @@ export class Phase1QuestionsJavascriptComponent {
   }
 
   nextQuestion(){
-    //this.lessonSlug++;
-    console.log(this.lessonSlug);
-    this.lesson+1;
+    this.nextSlug = this.questionService.nextQuestion(this.slug, this.lessonSlug);
+    console.log(this.nextSlug);
+    
+    // if (typeof(this.lesson) === 'object')
+    // {
+    // const currentID = this.lesson.findIndex(e => e.slug === this.slug);
+    // return currentID + 1;
+    // // const currentID = this.lesson.findIndex(e => e.slug === this.lessonSlug);
+    // // return currentID + 1;
+    // }
+
+    // const options = this.lesson.question;
+    // if(options.isCorrectSequence(this.placeHolder))
+    // {
+    //   alert('good job')
+    //   this.isnextDisabled = false;
+    
     //this.loadQuestion(this.currentQuestion + 1);
     // this.isnextDisabled = true;
     // this.ischeckDisabled = false;
@@ -107,6 +127,7 @@ export class Phase1QuestionsJavascriptComponent {
     {
       const options = this.lesson.question;
       this.options = options.getOptionsArray();
+      this.placeHolder = [];
     }
     // if(this.currentQuestion > this.reachedQuestion)
     //     this.reachedQuestion = this.currentQuestion;

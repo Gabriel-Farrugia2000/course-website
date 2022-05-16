@@ -22,6 +22,7 @@ export const lessons: Syllabus[] = [{
             name: 'Lesson 1',
             slug: 'lesson-1',
             question: new Question(
+                1,
                 'Put these in an order that creates a for loop:',
                 [
                     {
@@ -55,6 +56,7 @@ export const lessons: Syllabus[] = [{
           name: 'Lesson 2',
           slug: 'lesson-2',
           question: new Question(
+              2,
               'Test2',
               [
                   {
@@ -94,6 +96,7 @@ export const lessons: Syllabus[] = [{
           name: 'Lesson 1',
           slug: 'lesson-1',
           question: new Question(
+              1,
               'Put these in an order that creates a for loop:',
               [
                   {
