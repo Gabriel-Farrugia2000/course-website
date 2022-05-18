@@ -5,6 +5,7 @@ export interface Syllabus
     name: string;
     slug: string;
     lessons: Lesson[];
+    lastLessonIndex?: number;
 }
 
 export interface Lesson
@@ -18,7 +19,7 @@ export const lessons: Syllabus[] = [{
     name: 'Functions',
     slug: 'functions',
     lessons: [
-        {
+    {
             name: 'Lesson 1',
             slug: 'lesson-1',
             question: new Question(

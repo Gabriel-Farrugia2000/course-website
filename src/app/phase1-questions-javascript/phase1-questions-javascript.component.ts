@@ -1,10 +1,10 @@
-import { Attribute, Component, OnInit } from '@angular/core';
+import { Attribute, Component, OnDestroy, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { QuestionService } from '../service/question.service';
 import { Question } from '../question.model';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Lesson, lessons, Syllabus } from '../syllabus';
-import { findIndex } from 'rxjs';
+import { findIndex, Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,7 +12,8 @@ import { findIndex } from 'rxjs';
   templateUrl: './phase1-questions-javascript.component.html',
   styleUrls: ['./phase1-questions-javascript.component.css']
 })
-export class Phase1QuestionsJavascriptComponent {
+export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
+{
 
 
   questionID: number = 0;
@@ -28,6 +29,7 @@ export class Phase1QuestionsJavascriptComponent {
   lesson: Lesson | undefined;
   lessons: Lesson[] = [];
   nextSlug: string = '';
+  routerSubscription!: Subscription;
   
 
   isnextDisabled: boolean = true;
@@ -50,15 +52,21 @@ export class Phase1QuestionsJavascriptComponent {
       }
   }
   
-  constructor(private questionService: QuestionService, private route:ActivatedRoute, private router:Router) { }
+  constructor(private questionService: QuestionService, private route:ActivatedRoute, private router:Router) { 
+    this.routerSubscription = router.events.subscribe(e => {
+      if(e instanceof NavigationEnd) this.ngOnInit();
+      
+    });
+  }
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.params['slug'];
     this.lessonSlug = this.route.snapshot.params['lessonSlug'];
     this.lessons = this.questionService.getLessons(this.slug);
     this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
+    this.nextSlug = this.questionService.nextQuestion(this.slug, this.lessonSlug);
     this.loadQuestion();
-
+    this.isnextDisabled = true;
     
     // const currentLesson = this.lessons.findIndex(s => s.slug === this.lesson.findIndex( ))
   
@@ -86,6 +94,10 @@ export class Phase1QuestionsJavascriptComponent {
     */
     // this.nextQuestion();
     //this.loadQuestion(this.lessonID);
+  }
+
+  ngOnDestroy(): void {
+    this.routerSubscription.unsubscribe();
   }
 
   nextQuestion(){
@@ -153,6 +165,9 @@ export class Phase1QuestionsJavascriptComponent {
       {
         alert('good job')
         this.isnextDisabled = false;
+        // get lesson index
+        const syllabusSlug = this.route.snapshot.params['slug'];
+        this.questionService.setLastLesson(syllabusSlug, this.lessonSlug);
       }else{
       alert('try again')
       const attempt = this.questions[this.currentQuestion];

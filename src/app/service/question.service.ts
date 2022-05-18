@@ -16,9 +16,14 @@ export class QuestionService{
       return this.syllabus;
   }
 
+  getSyllabus(slug: string): Syllabus | undefined
+  {
+    return this.syllabus.find(i => i.slug === slug);
+  }
+
   getLessons(slug: string): Lesson[]
   {
-    const syllabus = this.syllabus.find(i => i.slug === slug);
+    const syllabus = this.getSyllabus(slug);
     if (syllabus === undefined) return [];
     return syllabus.lessons;
   }
@@ -34,6 +39,25 @@ export class QuestionService{
     const lesson = this.getLessons(slug);
     const index = lesson.findIndex(i => i.slug === lessonSlug);
     return (index < lesson.length - 1) ? lesson[index + 1].slug : '';
+  }
+
+  getLastLesson(slug: string): number
+  {
+    const syllabus = this.getSyllabus(slug);
+
+    if (syllabus === undefined) return 0;
+    return syllabus.lastLessonIndex || 0;
+  }
+
+  setLastLesson(slug: string, lessonSlug: string)
+  {
+    const syllabus = this.getSyllabus(slug);
+
+    if (syllabus !== undefined)
+    {
+      const index = syllabus.lessons.findIndex(i => i.slug === lessonSlug);
+      syllabus.lastLessonIndex = index;
+    }
   }
 
   /*

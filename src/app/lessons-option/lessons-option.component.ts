@@ -13,8 +13,11 @@ import { Lesson } from '../syllabus';
 export class LessonsOptionComponent implements OnInit {
 
   title = "Choose a lesson"
-  questions: Lesson[] = [];
+  lesson: Lesson | undefined;
+  lessons: Lesson[] = [];
   slug!: string;
+  test = 0;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +25,10 @@ export class LessonsOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.params['slug'];
-    this.questions = this.questionService.getLessons(this.slug);
+    this.lessons = this.questionService.getLessons(this.slug);
+    this.test = this.questionService.getLastLesson(this.slug);
+    console.log(this.test);
+    
   }
 
 

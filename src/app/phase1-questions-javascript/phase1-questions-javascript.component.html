@@ -53,7 +53,7 @@
                   </div>
                   <div class="buttons mt-3 pl-5">
                     <button mat-raised-button color="primary" [disabled]="currentQuestion==0" (click)="previousQuestion()">Previous</button>
-                    <button mat-raised-button color="primary" [disabled]="isnextDisabled" (click)="nextQuestion()">Next</button>
+                    <button mat-raised-button color="primary" [disabled]="isnextDisabled"[routerLink]="['/syllabus/', slug, nextSlug]">Next</button>
                     <button mat-raised-button color="primary" [disabled]="ischeckDisabled"(click)="validateAnswer()">Check</button>
                   </div>
                 </div>
