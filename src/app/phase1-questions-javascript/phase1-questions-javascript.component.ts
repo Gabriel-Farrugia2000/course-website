@@ -6,6 +6,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/rout
 import { Lesson, lessons, Syllabus } from '../syllabus';
 import { findIndex, Subscription } from 'rxjs';
 
+declare var Swal: any;
 
 @Component({
   selector: 'app-phase1-questions-javascript',
@@ -15,17 +16,17 @@ import { findIndex, Subscription } from 'rxjs';
 export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
 {
 
-
-  questionID: number = 0;
+  lessonID = '';
   slug!: string;
   lessonSlug!: string;
   questions: Question[] = [];
-  currentQuestion: number = -1;
+  currentQuestion: number = 0;
   reachedQuestion: number = -1;
   incorrectTries: number [] = [];
   placeHolder: string [] = [];
   progress: number = 0;
   isquizCompleted: boolean = false;
+  syllabus: Syllabus | undefined;
   lesson: Lesson | undefined;
   lessons: Lesson[] = [];
   nextSlug: string = '';
@@ -65,8 +66,13 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
     this.lessons = this.questionService.getLessons(this.slug);
     this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
     this.nextSlug = this.questionService.nextQuestion(this.slug, this.lessonSlug);
+    this.syllabus = this.questionService.getSyllabus(this.slug);
+    // this.lessonID = this.questionService.getLessonIndex(this.slug, this.lessonSlug);
     this.loadQuestion();
     this.isnextDisabled = true;
+    console.log(this.lessonID);
+    
+
     
     // const currentLesson = this.lessons.findIndex(s => s.slug === this.lesson.findIndex( ))
   
@@ -102,7 +108,7 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
 
   nextQuestion(){
     this.nextSlug = this.questionService.nextQuestion(this.slug, this.lessonSlug);
-    console.log(this.nextSlug);
+    this.getprogressPercent();
     
     // if (typeof(this.lesson) === 'object')
     // {
@@ -163,28 +169,41 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
       const options = this.lesson.question;
       if(options.isCorrectSequence(this.placeHolder))
       {
-        alert('good job')
+        Swal.fire(
+          'Well Done!',
+          '',
+          'success'
+        )
         this.isnextDisabled = false;
         // get lesson index
         const syllabusSlug = this.route.snapshot.params['slug'];
         this.questionService.setLastLesson(syllabusSlug, this.lessonSlug);
       }else{
-      alert('try again')
-      const attempt = this.questions[this.currentQuestion];
-      attempt.attempts++;
-      console.log(attempt.attempts)
+        Swal.fire(
+          'Incorrect',
+          'Try Again!',
+          'error'
+        )
+      this.lesson.question.attempts++;
       }
     }
   }
 
   getprogressPercent(){
-    this.progress = (this.currentQuestion/this.questions.length) *100;
+    if (typeof(this.lesson) === 'object')
+    {
+      this.progress = (this.lessons.length/ this.questions.length) *100;
+    }
     return this.progress;
   }
 
   displayContainer(){
-    if(this.currentQuestion == this.questions.length){
-      this.isquizCompleted = true;
-    }
+    /*
+    this.lessonID = this.nextSlug;
+      if(this.nextSlug == this.lessons.length){
+        this.isquizCompleted = true;
+    }  
+    */
   }
 }
+

@@ -41,6 +41,13 @@ export class QuestionService{
     return (index < lesson.length - 1) ? lesson[index + 1].slug : '';
   }
 
+  // getLessonIndex(slug: string, lessonSlug: string): string
+  // {
+  //   const lesson = this.getLessons(slug);
+  //   const index = lessons.findIndex(i => i.slug === lessonSlug);
+  //   return lesson[index];
+  // }
+
   getLastLesson(slug: string): number
   {
     const syllabus = this.getSyllabus(slug);

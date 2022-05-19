@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,7 +18,7 @@ import { LessonsComponent } from './lessons/lessons.component';
 import { HomeComponent } from './home/home.component';
 import { ExperiencePageComponent } from './experience-page/experience-page.component';
 import { RewardsComponent } from './rewards/rewards.component';
-import { Phase1QuestionsJavascriptComponent } from './phase1-questions-javascript/phase1-questions-javascript.component';
+import { Phase1QuestionsJavascriptComponent} from './phase1-questions-javascript/phase1-questions-javascript.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SyllabusComponent } from './syllabus/syllabus.component';
@@ -35,7 +36,7 @@ import { LoopsComponent } from './loops/loops.component';
     Phase1QuestionsJavascriptComponent,
     SyllabusComponent,
     LessonsOptionComponent,
-    LoopsComponent
+    LoopsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +46,7 @@ import { LoopsComponent } from './loops/loops.component';
     MatIconModule,
     MatCardModule,
     MatProgressBarModule,
+    MatDialogModule,
     DragDropModule,
     NgbModule,
     BrowserAnimationsModule,
