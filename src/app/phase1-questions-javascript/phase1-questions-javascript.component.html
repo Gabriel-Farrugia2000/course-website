@@ -67,9 +67,9 @@
               <h1>Congrats!! You finished this interactive quiz</h1>
               <p>Below you will find how many times it took you to finish each lesson</p>
               <ul>
-                <!-- <li *ngFor="let test of lesson">
-                    <p>Lesson: {{test.name}} </p>
-                </li> -->
+                 <li *ngFor="let test of lessons">
+                    <p>{{test.name}} attempts: {{test.question.attempts}}  </p>
+                </li> 
               </ul>
               <p>Make sure to revise those lessons that took some tries</p>
               <button mat-raised-button color="primary" routerLink="/syllabus">Syllabus</button>

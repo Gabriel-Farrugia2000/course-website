@@ -15,8 +15,6 @@ declare var Swal: any;
 })
 export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
 {
-
-  lessonID = '';
   slug!: string;
   lessonSlug!: string;
   questions: Question[] = [];
@@ -71,8 +69,9 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
     // this.lessonID = this.questionService.getLessonIndex(this.slug, this.lessonSlug);
     this.loadQuestion();
     this.isnextDisabled = true;
-    console.log(this.lessonID);
-    
+    console.log(this.lessons.length);
+    console.log(this.lessons.length);
+  
 
     
     // const currentLesson = this.lessons.findIndex(s => s.slug === this.lesson.findIndex( ))
@@ -184,18 +183,18 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
   getprogressPercent(){
     if (typeof(this.lesson) === 'object')
     {
-      this.progress = (this.lessons.length/ this.questions.length) *100;
+      this.progress = (this.lesson.lessonID / this.lessons.length) *100;
     }
     return this.progress;
   }
 
-  displayContainer(){
-    /*
-    this.lessonID = this.nextSlug;
-      if(this.nextSlug == this.lessons.length){
-        this.isquizCompleted = true;
-    }  
-    */
-  }
+  // displayContainer(){
+  //   if (typeof(this.lesson) === 'object')
+  //   {
+  //     if(this.lesson.lessonID === this.lessons.length){
+  //       this.isquizCompleted = true;
+  //     }  
+  //   }
+  // }
 }
 
