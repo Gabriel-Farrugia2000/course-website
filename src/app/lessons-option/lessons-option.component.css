@@ -29,9 +29,9 @@
 }
 
 .mat-card{
-    width: 12%;
+    width: 13%;
     height: 25%;
-    margin: 2.75em;
+    margin: 2.75em 7em;
     cursor: pointer;
     background-color: #5E5B8F;
     box-shadow: 0 2px 5px black;

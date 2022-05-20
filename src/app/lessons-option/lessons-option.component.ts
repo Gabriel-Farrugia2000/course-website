@@ -27,8 +27,6 @@ export class LessonsOptionComponent implements OnInit {
     this.slug = this.route.snapshot.params['slug'];
     this.lessons = this.questionService.getLessons(this.slug);
     this.test = this.questionService.getLastLesson(this.slug);
-    console.log(this.test);
-    
   }
 
 

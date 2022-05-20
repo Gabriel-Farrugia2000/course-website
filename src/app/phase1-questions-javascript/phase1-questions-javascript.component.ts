@@ -36,6 +36,7 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
   isnextDisabled: boolean = true;
   ischeckDisabled: boolean = false; 
   options: string [] = [];
+  previousSlug: string = '';
 
   drop(event: CdkDragDrop<string[]>) {
     
@@ -129,16 +130,7 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
     // this.ischeckDisabled = false;
     // this.getprogressPercent();
   }
-
-  previousQuestion(){
-    //this.router.navigate(['/syllabus/', this.slug,  this.lessonSlug- 1]);
-
-    // this.loadQuestion(this.currentQuestion - 1);
-    // this.isnextDisabled = false;
-    // this.ischeckDisabled = true;
-    // this.getprogressPercent();
-  }
-
+  
   loadQuestion()
   {
     if (typeof(this.lesson) === 'object')

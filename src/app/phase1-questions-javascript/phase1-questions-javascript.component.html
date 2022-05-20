@@ -4,19 +4,26 @@
         <div class="card">
           <div class="card-body">
             <h1>{{ syllabus.name}}</h1>
+            
+            <h4>{{ lesson.name}}</h4>
+            
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
             <p>{{ lesson.question.description}}</p>
           </div>
-    </div>
-    </div>
+        </div>
+          <div class="buttons mt-3 offset-1">
+          <button mat-raised-button  [routerLink]="['/syllabus/']">Syllabus</button>
+          <button mat-raised-button  [routerLink]="['/syllabus/', slug]">Lessons</button>
+        </div>
+      </div> 
+
       <div class="col-6">
           <ng-container *ngIf="!isquizCompleted">
             <div class="content">
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-
                 <!-- Questions -->
-                <h2 class="mt-5">{{ lesson.question.questionText}}</h2>
+                <h2 class="question mt-5">{{ lesson.question.questionText}}</h2>
                   
                 <br>
                 <div class="example-container">
@@ -48,9 +55,8 @@
                     <div class="example-box" *ngFor="let item of options" cdkDrag>{{item}}</div>
                   </div>
                   <div class="buttons mt-3 pl-5">
-                    <button mat-raised-button color="primary" [disabled]="currentQuestion==0" (click)="previousQuestion()">Previous</button>
-                    <button mat-raised-button color="primary" [disabled]="isnextDisabled"[routerLink]="['/syllabus/', slug, nextSlug]">Next</button>
-                    <button mat-raised-button color="primary" [disabled]="ischeckDisabled"(click)="validateAnswer()">Check</button>
+                    <button mat-raised-button  [disabled]="isnextDisabled"[routerLink]="['/syllabus/', slug, nextSlug]">Next</button>
+                    <button mat-raised-button  [disabled]="ischeckDisabled"(click)="validateAnswer()">Check</button>
                   </div>
                 </div>
             </div>
