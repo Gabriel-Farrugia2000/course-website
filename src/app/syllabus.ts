@@ -273,7 +273,7 @@ export const lessons: Syllabus[] = [{
                       {
                         order: 4,
                         label: 'return 1;',
-                        correct: false
+                        correct: true
                       },
                       {
                         order: 0,
