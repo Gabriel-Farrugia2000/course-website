@@ -427,7 +427,7 @@ export const lessons: Syllabus[] = [{
       slug: 'lesson-4',
       question: new Question(
           'Loops offer a quick and easy way to do something repeatedly.You can think of a loop as a computerized version of the game where you tell someone to take X steps in one direction, then Y steps in another. ',
-          'Put these in an order that creates a wile loop and displays numbers from 1 to 5',
+          'Put these in an order that creates a while loop and displays numbers from 1 to 5',
           [
               {
                 order: 3,

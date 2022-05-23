@@ -8,7 +8,7 @@
             <h4>{{ lesson.name}}</h4>
             
             <div class="progress">
-              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':getprogressPercent()+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <p>{{ lesson.question.description}}</p>
           </div>

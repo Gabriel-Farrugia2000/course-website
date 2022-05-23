@@ -23,11 +23,11 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
   incorrectTries: number [] = [];
   placeHolder: string [] = [];
   progress: number = 0;
-  isquizCompleted: boolean = false;
   syllabus: Syllabus | undefined;
   lesson: Lesson | undefined;
   lessons: Lesson[] = [];
   nextSlug: string = '';
+  test: number = 0;
   routerSubscription!: Subscription;
   
 
@@ -66,6 +66,7 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
     this.lesson = this.questionService.getLesson(this.slug, this.lessonSlug);
     this.nextSlug = this.questionService.nextQuestion(this.slug, this.lessonSlug);
     this.syllabus = this.questionService.getSyllabus(this.slug);
+    this.test = this.questionService.getLessonIndex(this.slug, this.lessonSlug);
     // this.lessonID = this.questionService.getLessonIndex(this.slug, this.lessonSlug);
     this.loadQuestion();
     this.isnextDisabled = true;
@@ -176,25 +177,21 @@ export class Phase1QuestionsJavascriptComponent implements OnInit, OnDestroy
           'error'
         )
       this.lesson.question.attempts++;
+      console.log(this.lesson.question);
+      
       }
     }
   }
 
-  getprogressPercent(){
-    if (typeof(this.lesson) === 'object')
-    {
-      this.progress = (this.lesson.lessonID / this.lessons.length) *100;
-    }
-    return this.progress;
+  getprogressPercent()
+  {
+    const currentLesson = this.questionService.getLessonIndex(this.slug, this.lessonSlug);
+    return (currentLesson / this.lessons.length) *100;
   }
 
-  // displayContainer(){
-  //   if (typeof(this.lesson) === 'object')
-  //   {
-  //     if(this.lesson.lessonID === this.lessons.length){
-  //       this.isquizCompleted = true;
-  //     }  
-  //   }
-  // }
+  get isquizCompleted(): boolean
+  {
+    return this.questionService.isComplete(this.slug);
+  }
 }
 

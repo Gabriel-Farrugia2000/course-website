@@ -9,8 +9,6 @@ export class QuestionService{
 
   syllabus: Syllabus[] = lessons;
   
-
-  
   getAll(): Syllabus[]
   {
       return this.syllabus;
@@ -41,12 +39,12 @@ export class QuestionService{
     return (index < lesson.length - 1) ? lesson[index + 1].slug : '';
   }
 
-  // getLessonIndex(slug: string, lessonSlug: string): string
-  // {
-  //   const lesson = this.getLessons(slug);
-  //   const index = lessons.findIndex(i => i.slug === lessonSlug);
-  //   return lesson[index];
-  // }
+  getLessonIndex(slug: string, lessonSlug: string): number
+  {
+    const lesson = this.getLessons(slug);
+    const index = lesson.findIndex(i => i.slug === lessonSlug);
+    return index;
+  }
 
   getLastLesson(slug: string): number
   {
@@ -65,6 +63,17 @@ export class QuestionService{
       const index = syllabus.lessons.findIndex(i => i.slug === lessonSlug);
       syllabus.lastLessonIndex = index;
     }
+  }
+
+  isComplete(slug: string): boolean
+  {
+    const syllabus = this.getSyllabus(slug);
+
+    if (syllabus !== undefined && syllabus.lastLessonIndex !== undefined)
+    {
+      return syllabus.lastLessonIndex >= syllabus.lessons.length - 1;
+    }
+    return false;
   }
 
   /*
