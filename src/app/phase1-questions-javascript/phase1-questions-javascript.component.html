@@ -1,5 +1,6 @@
-<div class="container-fluid p-0" *ngIf="lesson && syllabus">
-  <div class="row m-0">
+<ng-container *ngIf="!isquizCompleted">
+  <div class="container-fluid p-0" *ngIf="lesson && syllabus">
+    <div class="row m-0">
       <div class="col-4 offset-1">
         <div class="card">
           <div class="card-body">
@@ -19,8 +20,7 @@
         </div>
       </div> 
 
-      <div class="col-6">
-          <ng-container *ngIf="!isquizCompleted">
+        <div class="col-6">
             <div class="content">
                 <!-- Questions -->
                 <h2 class="question mt-5">{{ lesson.question.questionText}}</h2>
@@ -60,7 +60,10 @@
                   </div>
                 </div>
             </div>
-          </ng-container>
+          </div>
+    </div>
+  </div> 
+</ng-container>
 
           <ng-container *ngIf="isquizCompleted">
             <div class="result">
@@ -75,7 +78,3 @@
               <button mat-raised-button color="primary" routerLink="/syllabus">Syllabus</button>
             </div>
           </ng-container>
-      </div>
-  </div>
-</div>
-
